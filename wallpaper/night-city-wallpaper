@@ -1,0 +1,6 @@
+#!/bin/bash
+# Starts/stops the live wallpaper. Arg = theme name (Omarchy hook passes it); defaults to current theme.
+theme="${1:-$(cat "$HOME/.config/omarchy/current/theme.name" 2>/dev/null)}"
+pkill -f night-city-wallpaper.py
+[[ "$theme" == "night-city" ]] && setsid -f python3 "$HOME/.local/share/night-city/night-city-wallpaper.py" >/dev/null 2>&1
+exit 0
